@@ -1,0 +1,12 @@
+symbol,value,description
+TP53,3.4,DNA damage response
+BRCA1,2.8,Homologous recombination
+MYC,4.1,Cell cycle regulation
+EGFR,1.7,Growth factor signaling
+VEGFA,3.9,Angiogenesis
+HIF1A,2.5,Hypoxia response
+MTOR,1.3,Metabolic control
+CDKN1A,2.2,Cell cycle arrest
+BCL2,1.1,Apoptosis regulation
+GATA3,2.9,Lineage specification
+

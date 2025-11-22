@@ -1,0 +1,134 @@
+## Gene Flux Palette
+
+把干巴巴的表达矩阵转译成可“玩”的科幻艺术：Gene Flux Palette 让每一组基因数据都长出自己的数字指纹——它可以是实时粒子动画、科研海报、甚至“基因电影”。整个实验在纯前端环境下完成（Vite + React + Tailwind），内置示例数据与导出能力，随时可用来验证更大胆的生物数据 × 生成艺术想法。
+
+### 技术栈
+- React + TypeScript（Vite 构建工具）
+- Tailwind CSS（霓虹 / 宇宙风 UI）
+- Canvas API + 自定义粒子物理（生物学驱动的动画引擎）
+- chroma-js（感知友好的颜色映射）
+- PapaParse（CSV / 时间序列数据解析）
+- html-to-image（画布、海报、动画帧导出）
+
+### 快速开始
+```bash
+npm install
+npm run dev
+```
+按照终端给出的本地地址访问即可。
+
+### 当前功能
+- Lab Console 控制面板：模式切换、数据摘要、精选基因
+- 对示例 / 自定义数据执行 z-score 标准化与百分位映射
+- chroma-js 多模式颜色传递
+- 光谱条 + 色卡网格可视化
+- 导出
+  - 当前调色板 JSON
+  - 预览视图 PNG
+- CSV 上传：读取用户文件、校验列与数值、与内置示例自由切换
+- 科研海报生成器：自动布局、渲染、导出艺术化海报
+- 时间线动画（基因电影）：内置 2 套示例时间线，可自定义上传多时间点 CSV，实时播放/暂停、循环、帧信息展示
+
+### 创新亮点
+- 数据 → 艺术“双通道”叙事：同一组表达矩阵既能生成实时交互的粒子艺术，又能一键排版成科幻海报，形成独特的“数字指纹”。
+- 生物学驱动的粒子物理：粒子间的吸引/排斥由真实通路、功能关系控制，视觉变化直接对应生物机制。
+- 基因电影（Gene Movie）：多时间点 CSV 自动拼接为连续动画，可讲述“细胞的一生”或“肿瘤进展”故事，支持导出帧、故事化展示。
+- 未来扩展中的概念：
+  - 多风格生成器：神经网络拓扑、通路网络、分形/流体风格，让每个数据集拥有多种视觉身份。
+  - 互动式故事轴：可拖拽时间线、对比两类样本、叠加语音/字幕，让科研讲述“可玩化”。
+  - 自动化叙事与字幕：依据表达阈值、通路活性生成实时文本解说，无需大模型也能输出“科学旁白”。
+  - 媒体导出新形态：GIF/MP4 捕捉、帧序列、Shader/WebGL 代码，让艺术成果可复用到海报、视频、实时装置。
+  - 数据感知布局：结合聚类/降维算法，让粒子初始位置与生物统计结构对齐，增强科学解释力。
+  - 知识库联动：内置 Pathway/GO/肿瘤分型模板，自动匹配背景知识，降低非生物背景用户的理解门槛。
+
+### CSV 上传与切换
+1. 点击左侧 “选择 CSV 文件”，挑选包含 `symbol,value,description` 列的文件（示例见 `data/sample-genes.csv`）。
+2. 解析成功后自动切换为 “Custom CSV” 数据源；若失败，会在上传卡片下方显示中文错误信息。
+3. 点击 “还原示例数据” 可回到内置 10 基因数据。
+4. 建议行数 1~200，`value` 需能被 `Number()` 解析；description 可为空但需保留列。
+
+### 时间线动画使用
+1. 在“Timeline Animation” 模块中，先点击示例按钮（细胞分化 / 肿瘤进展）即可立即预览动画。
+2. 若需自定义：
+   - 为每个时间点填写标签与时间戳，并上传对应 CSV（需与单次 CSV 相同的 `symbol,value,description` 结构）。
+   - 至少两个时间点才可生成动画，系统会按时间戳排序并执行插值。
+3. 动画画布支持播放 / 暂停 / 重置 / 循环切换，左上角会显示当前时间点与插值进度。
+4. 点击 “Export frame PNG” 可截取当前帧，后续将扩展 GIF/MP4 导出能力。
+
+### 规划路线
+- 多风格可视化引擎：神经网络拓扑、通路网络、分形/流体粒子场
+- 互动式故事轴：拖拽式时间轴、对比模式、语音/字幕叙事
+- 自动化文本叙事：基于阈值与通路状态生成即时说明，嵌入动画字幕
+- 媒体导出扩展：GIF/MP4 捕捉、帧序列导出、Shader/WebGL 代码片段
+- 数据感知布局：降维/聚类驱动的粒子分布、功能分区、动效调优
+- 知识库增强：内置 Pathway/GO/肿瘤分型，自动匹配解释卡片
+- URL 分享、会话记录、非生物背景用户引导式体验
+
+### 数据格式
+CSV 表头：`symbol,value,description`。`value` 可为 log 后的表达量或原始计数（后续会补充更多标准化策略）。参考 `data/sample-genes.csv`。
+
+### 许可证
+MIT（可按需替换）。欢迎 fork 并延展这个“基因配色器”概念。
+
+---
+
+以下为 Vite 官方模板的中文译文，保留作参考。
+
+### React + TypeScript + Vite 模板说明
+模板提供最小化配置，让 React 在 Vite 中配合 HMR 与基本 ESLint 规则运行。
+
+官方可选插件：
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react)：基于 Babel（或 rolldown-vite 场景下的 [oxc](https://oxc.rs)）实现 Fast Refresh。
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc)：基于 SWC 的 Fast Refresh 方案。
+
+#### React Compiler
+默认未启用 React Compiler（考虑开发/构建性能）。如需开启，请参考[官方文档](https://react.dev/learn/react-compiler/installation)。
+
+#### 扩展 ESLint 配置
+若面向生产环境，建议启用类型感知规则：
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      tseslint.configs.recommendedTypeChecked,
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+])
+```
+
+也可以安装 [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) 与 [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) 来补充 React 相关规则：
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      reactX.configs['recommended-typescript'],
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+])
+```
+
